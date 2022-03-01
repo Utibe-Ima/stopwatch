@@ -11,15 +11,15 @@ let interval = null;
 function timer() {
     seconds++;
 
-    let hrs = Math.floor(seconds / 3600);
-    let min = Math.floor((seconds - (hrs * 60)) / 60);
-    let secs = Math.floor(seconds % 60);
+    let min = Math.floor(seconds / 3600);
+    let secs = Math.floor((seconds - (min * 60)) / 60);
+    let milisecs = Math.floor(seconds % 60);
 
-    if(hrs < 10) {hrs = '0' + hrs}
     if(min < 10) {min = '0' + min}
     if(secs < 10) {secs = '0' + secs}
+    if(milisecs < 10) {milisecs = '0' + milisecs}
 
-    time.innerText = `${hrs}:${min}:${secs}`
+    time.innerText = `${min}:${secs}:${milisecs}`
 }
 
 start.addEventListener('click', function () {
@@ -27,7 +27,7 @@ start.addEventListener('click', function () {
         return
     }  
     
-    interval = setInterval(timer, 1000)
+    interval = setInterval(timer, 100)
 })
 
 stop.addEventListener('click', function(){
@@ -36,10 +36,7 @@ stop.addEventListener('click', function(){
 })
 
 reset.addEventListener('click', function() {
-    clearInterval(interval)
-    interval = null
-    seconds = 0
-    time.innerText = '00:00:00'
+    
     window.location.reload()
 })
 
