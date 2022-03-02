@@ -2,6 +2,7 @@ const time = document.querySelector('.timer')
 const start = document.getElementById('start')
 const stop = document.getElementById('stop')
 const reset = document.getElementById('reset')
+const all = document.querySelectorAll('button')
 
 
 
@@ -32,11 +33,18 @@ start.addEventListener('click', function () {
 
 stop.addEventListener('click', function(){
     clearInterval(interval)
-    interval = null
+    interval = null;
 })
 
 reset.addEventListener('click', function() {
-    
+    clearInterval(interval)
+    interval = null
+    seconds = 0
+    time.innerText = '00:00:00'
     window.location.reload()
 })
+
+
+
+
 
